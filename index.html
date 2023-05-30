@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://kit.fontawesome.com/7f1688b379.js' crossorigin='anonymous'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="img-cont">
+                <img src="./img/gaeul.jpg" alt="">
+            </div>
+            <h1>
+                <span id="teks-mengetik">
+
+                </span>
+                <p>
+                    Junior Web Developer | Student
+                </p>
+            </h1>
+        </div>
+
+
+        <div class="body">
+            <h1 class="find-me">Find me on
+                <i class="fa-solid fa-angles-down"></i>
+            </h1>
+            <div class="icon-cont">
+                <a class="icon" href="https://github.com/Alhaqqij">
+                    <div class="logo">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        github
+                    </p>
+                </a>
+                <a class="icon" href="mailto:alhaqqisyakila2020@gmail.com?subject=Halo">
+                    <div class="logo">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <p>
+                        Email
+                    </p>
+                </a>
+                <a class="icon" href="https://www.instagram.com/haqqiqq/">
+                    <div class="logo">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Instagram
+                    </p>
+                </a>
+                <a class="icon" href="https://www.facebook.com/profile.php?id=100035697983232&mibextid=ZbWKwL">
+                    <div class="logo">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Facebook
+                    </p>
+                </a>
+                <a class="icon" href="https://www.linkedin.com/in/alhaqqi-syakila-bb1b6921b/">
+                    <div class="logo">
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        LinkedIn
+                    </p>
+                </a>
+                <a class="icon" href="https://wa.me/6258759642235?text=hello">
+                    <div class="logo">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <p>
+                        Whatsapp
+                    </p>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy;Alhaqqi Syakila 2023</p>
+        </div>
+    </div>
+
+    <script>
+        const kalimat = [
+            "Halo Guys!",
+            "My name is, ",
+            "Alhaqqi Syakila"
+        ];
+        let indexKalimat = 0;
+        let indexKarakter = 0;
+        let intervalID;
+
+        function mengetik() {
+            const teksMengetik = document.getElementById("teks-mengetik");
+            const kalimatSaatIni = kalimat[indexKalimat];
+
+            if (indexKarakter < kalimatSaatIni.length) {
+                teksMengetik.textContent += kalimatSaatIni.charAt(indexKarakter);
+                indexKarakter++;
+            } else {
+                clearInterval(intervalID);
+                setTimeout(hapusTeks, 1000); // Waktu delay sebelum menghapus teks
+            }
+        }
+
+        function hapusTeks() {
+            const teksMengetik = document.getElementById("teks-mengetik");
+
+            if (teksMengetik.textContent.length > 0) {
+                teksMengetik.textContent = teksMengetik.textContent.slice(0, -1);
+                setTimeout(hapusTeks, 50); // Waktu delay antara penghapusan karakter
+            } else {
+                indexKalimat = (indexKalimat + 1) % kalimat.length;
+                indexKarakter = 0;
+                intervalID = setInterval(mengetik, 100); // Waktu delay antara karakter
+            }
+        }
+
+        intervalID = setInterval(mengetik, 100); // Memulai efek mengetik
+    </script>
+</body>
+
+</html>
